@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+$color-scheme-auto: false;
+
+// still use $color-scheme-dark, for entering dark branch in auto
+// With this I don't need to change auto
+$color-scheme-dark: true; //
+@import "minima/skins/auto";
