@@ -1,0 +1,11 @@
+.site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.site-logo {
+  height: 1em;        // same height as text
+  width: auto;
+  vertical-align: middle;
+}
