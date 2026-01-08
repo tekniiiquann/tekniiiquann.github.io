@@ -8,7 +8,7 @@ baseurl:
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
- docs and tips for HPC devs
+ docs of HPC devs
 
 # turn on google-analytics
 google_analytics: "G-RHY4WEHMV7"
