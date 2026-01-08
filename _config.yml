@@ -2,7 +2,7 @@ title: Rauhallinen Sieni
 author:
   name: Quann
   email:
-url: "https://tekniiquann.github.io"  
+url: "https://tekniiiquann.github.io"  
 baseurl: 
 
 # The `>` after `description:` means to ignore line-breaks until next key.
@@ -11,7 +11,7 @@ description: >
  Quaick Docs & Tips for HPC devs
 
 # turn on google-analytics
-google_analytics: "G-RHY4WEHMV7"
+# google_analytics: "G-RHY4WEHMV7"
 
 #collections:
 #  authors:
