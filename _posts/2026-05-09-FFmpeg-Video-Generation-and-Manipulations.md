@@ -24,7 +24,7 @@ Take two groups of pictures from different subfolders with glob naming patterns,
 [v0][v1]hstack=inputs=2" \
 -c:v libx264 -pix_fmt yuv444p v1-output.mp4
 {% endhighlight %}
-Other almost same applications, with different font size:
+Other almost same application, with different font size:
 {% highlight console %}
 ffmpeg -framerate 15 -pattern_type glob -i "./short/short-frames.*.png" \
 -framerate 15 -pattern_type glob -i "./long/long-frames.*.png" \
