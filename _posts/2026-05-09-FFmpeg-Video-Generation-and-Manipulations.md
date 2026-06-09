@@ -43,7 +43,8 @@ Or only using glob for two subfolders' pictures, simply stack them without capti
 [0:v][1:v]vstack=inputs=2:shortest=1" \
 -c:v libx264 -pix_fmt yuv420p v1-output.mp4
 {% endhighlight %}
-Another way for similar purpose:
+
+One can also stack video vertically, by using `[top][bottom]vstack=inputs=2` instead:
 {% highlight console %}
 ~$ ffmpeg -framerate 11 -pattern_type glob -i "./slice2/slice2_t-*.png" \
 -framerate 11 -pattern_type glob -i "./slice1/slice1_t-*.png" \
