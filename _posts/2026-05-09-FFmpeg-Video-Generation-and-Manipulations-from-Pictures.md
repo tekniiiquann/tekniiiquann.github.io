@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "FFmpeg-Video-Generation-and-Manipulations"
+title: "FFmpeg Video Generation and Manipulations from Pictures"
 categories_short_name: paraview_Insitu
 meta: "paraview Insitu"
-type: "Draft"
+type: "publication"
 ---
 If you're sitting on a mountain of simulation snapshots and need to transform them into a video for your next big presentation, [FFmpeg](https://ffmpeg.org/) is your best friend. Here is a list of tested command lines to make the process completely painless.
 
