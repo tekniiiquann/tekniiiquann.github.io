@@ -14,13 +14,23 @@ Combine *.png pictures to *.mp4 video with input framerate 10 and starting frame
 v1-output.mp4
 {% endhighlight %}
 
-Take two groups of pictures from different subfolders with glob naming patterns, then stack them vertically with captions, combine them as *mp4 video
+Take two groups of pictures from different subfolders with glob naming patterns, then stack them horizontally with captions (text_h counted from top, the less it's extracted, the lower text is), combine them as *mp4 video
 {% highlight console %}
 ~$ ffmpeg -framerate 7 -pattern_type glob -i "./slice2/slice2_t-*.png" \
 -framerate 7 -pattern_type glob -i "./slice1/slice1_t-*.png" \
 -filter_complex "\
 [0:v]drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf:text='y-normal Slice':fontsize=90:fontcolor=black:x=(w-text_w)/2:y=h-text_h-100[v0]; \
 [1:v]drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf:text='z-normal Slice':fontsize=90:fontcolor=black:x=(w-text_w)/2:y=h-text_h-100[v1]; \
+[v0][v1]hstack=inputs=2" \
+-c:v libx264 -pix_fmt yuv444p v1-output.mp4
+{% endhighlight %}
+Other almost same applications, with different font size:
+{% highlight console %}
+ffmpeg -framerate 15 -pattern_type glob -i "./short/short-frames.*.png" \
+-framerate 15 -pattern_type glob -i "./long/long-frames.*.png" \
+-filter_complex "\
+[0:v]drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf:text='short-axis distribution':fontsize=20:fontcolor=black:x=(w-text_w)/2:y=h-text_h-20[v0]; \
+[1:v]drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf:text='long-axis distribution':fontsize=20:fontcolor=black:x=(w-text_w)/2:y=h-text_h-20[v1]; \
 [v0][v1]hstack=inputs=2" \
 -c:v libx264 -pix_fmt yuv444p v1-output.mp4
 {% endhighlight %}
