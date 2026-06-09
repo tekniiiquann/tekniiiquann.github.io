@@ -7,7 +7,7 @@ type: "Draft"
 ---
 If you're sitting on a mountain of simulation snapshots and need to transform them into a video for your next big presentation, [FFmpeg](https://ffmpeg.org/) is your best friend. Here is a list of tested command lines to make the process completely painless.
 
-starts from number 100 *png with input framerate 10, to combine into *mp4 video
+Combine *.png pictures to *.mp4 video with input framerate 10 and starting frame 100:
 {% highlight console %}
 ~$ ffmpeg -framerate 10 -start_number 0100 -i clip_t-%4d.png \
 -c:v libx264 -r 10 -pix_fmt yuv420p \
