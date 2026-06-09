@@ -25,14 +25,14 @@ Take two groups of pictures from different subfolders with glob naming patterns,
 
 Or only using glob for two subfolders' pictures, simply stack them without caption:
 {% highlight console %}
-ffmpeg -framerate 7 -pattern_type glob -i "./pMarker-slice2/pMarker-slice2_t-*.png" \
+~$ ffmpeg -framerate 7 -pattern_type glob -i "./pMarker-slice2/pMarker-slice2_t-*.png" \
 -framerate 7 -pattern_type glob -i "./pMarker-slice1/pMarker-slice1_t-*.png" \
 -filter_complex "[0:v][1:v]vstack=inputs=2:shortest=1" \
 -c:v libx264 -pix_fmt yuv420p p-22-t0.75-AdGRz-bt0.005.mp4
 {% endhighlight %}
-or 
+Even more simpler: 
 {% highlight console %}
-ffmpeg -framerate 11 -pattern_type glob -i "./pMarker-slice2/pMarker-slice2_t-*.png" \
+~$ ffmpeg -framerate 11 -pattern_type glob -i "./pMarker-slice2/pMarker-slice2_t-*.png" \
 -framerate 11 -pattern_type glob -i "./pMarker-slice1/pMarker-slice1_t-*.png" \
 -filter_complex "\
 [1:v]pad=iw:ih[bottom]; \
@@ -51,7 +51,7 @@ combine two *mp4 side-by-side into new *mp4 video
 
 Combine three *mp4 side-by-side into new *mp4 video with caption and specific font:
 {% highlight console %}
-ffmpeg -i "p-5.5-T0-0.90-AdGRz-bt0.000001-RS18025.mp4" -i "p-5.5-T0-0.90-AdGRz-bt0.000001-RS256.mp4" -i "p-5.5-T0-0.90-AdGRz-bt0.000001-RS1224.mp4" \
+~$ ffmpeg -i "p-5.5-T0-0.90-AdGRz-bt0.000001-RS18025.mp4" -i "p-5.5-T0-0.90-AdGRz-bt0.000001-RS256.mp4" -i "p-5.5-T0-0.90-AdGRz-bt0.000001-RS1224.mp4" \
 -filter_complex "[0:v]setsar=1,drawtext=text='Failed 1':x=(w-text_w)/2:y=h-text_h-10:fontsize=50:fontcolor=black,pad=iw:ih:(ow-iw)/2:(oh-ih)/2[a]; \
 [1:v]setsar=1,drawtext=text='Failed 2':x=(w-text_w)/2:y=h-text_h-10:fontsize=50:fontcolor=black,pad=iw:ih:(ow-iw)/2:(oh-ih)/2[b]; \
 [2:v]setsar=1,drawtext=text='Success Seeding':x=(w-text_w)/2:y=h-text_h-10:fontsize=50:fontcolor=black,pad=iw:ih:(ow-iw)/2:(oh-ih)/2[c]; \
@@ -60,10 +60,10 @@ ffmpeg -i "p-5.5-T0-0.90-AdGRz-bt0.000001-RS18025.mp4" -i "p-5.5-T0-0.90-AdGRz-b
 
 Combine two *mp4 videos with different length by duplicating last frame or shorter video: 
 {% highlight console %}
-ffmpeg -i ~/ReHD3/dyGiLa-project/project_462000960/test/pio-IX-2/insitu/p-22-t0.75-AdGRz-bt1000000.mp4 \
+~$ ffmpeg -i ~/ReHD3/dyGiLa-project/project_462000960/test/pio-IX-2/insitu/p-22-t0.75-AdGRz-bt1000000.mp4 \
 -i p-22-t0.75-AdGRz-bt0.005.mp4 \
--filter_complex "[0:v]drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf:text='Specular z-Boundary':fontsize=90:fontcolor=black:x=(w-text_w)/2:y=h-text_h-150,tpad=stop_mode=clone:stop_duration=60[v0];
-\[1:v]drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf:text='Pair Breaking z-Boundary':fontsize=90:fontcolor=black:x=(w-text_w)/2:y=h-text_h-150[v1];\
+-filter_complex "[0:v]drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf:text='Specular z-Boundary':fontsize=90:fontcolor=black:x=(w-text_w)/2:y=h-text_h-150,tpad=stop_mode=clone:stop_duration=60[v0];\
+[1:v]drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf:text='Pair Breaking z-Boundary':fontsize=90:fontcolor=black:x=(w-text_w)/2:y=h-text_h-150[v1];\
 [v0][v1]hstack=inputs=2:shortest=1" \
 -c:v libx264 -preset slow -crf 18 -pix_fmt yuv444p p-22-t0.7-AdGRz-bt1M-vs-bt0.005.mp4
 {% endhighlight %}
