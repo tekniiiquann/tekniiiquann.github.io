@@ -14,10 +14,10 @@ Combine *.png pictures to *.mp4 video with input framerate 10 and starting frame
 v1-output.mp4
 {% endhighlight %}
 
-But what about pulse few seconds before new frames are inported?
+But what about pulse few seconds before new frames are imported?
 The next lines of commands combine *.png pictures to *.mp4 video inaddtion to pulse 0th frame 3 seconds:
 {% highlight console %}
-ffmpeg -framerate 10 -start_number 100 -i clip_t-%4d.png \
+~$ ffmpeg -framerate 10 -start_number 100 -i clip_t-%4d.png \
 -vf "tpad=start_mode=clone:start_duration=3" \
 -c:v libx264 -pix_fmt yuv420p \
 v1-output.mp4
